@@ -1,0 +1,55 @@
+// _____________IMPORTANTE______________
+
+// Dalla consegna, con la richiasta di creare il backup, quel che ho inteso è che per cambiare le variabili, si dovesse utilizzare il file copiato (dal momento in cui non sono riuscita a trovare un senso al copiarlo per averlo lì, senza collegarlo a nulla, a meno che io non desiderassi modificare il partial originale ed avere per scrupolo il file di partenza salvato, azione che ritengo comunque da evitare). Il file copiato però dava errori. Commentando gli errori nel file di backup, il problema non si risolveva, poiche gli stessi errori, commentati nel file di backup li ritrovava poi nel partial originale di bootstrap, e modificare quel file è un'azione che ritengo da evitare. L'unica soluzione che ho trovato per poter utilizzare il file di backup per le variabili, è stata quella di cancellare la maggior parte delle righe di codice, tenendo solo le variabili di base, che poi ho appunto modificato con successo. Illustro qui delle soluzioni migliori di quella che ho dovuto seguire, dettata da come ho inteso io la consegna.
+// 1. Avrei potuto direttamente ridefinire le 3 variabili che ho modificato nel file "custom", utilizzando le prime righe di codice.
+// 2. Avrei potuto creare un partial da zero con le variabili ridefinite come sopra, e poi collegarlo nella prima riga di codice del file custom.
+// 3. Avrei potuto collegare il file di backup copiato direttamente al scss di bootstrap e modificare le variabili dal file di backup.
+// Tutte e 3 le opzioni le ho testate e non creano i problemi che purtroppo mi ha creato la modalità che ho capito essere richiesta dalla consegna e che ho risolto sacrificando la maggior parte delle righe di codice del backup. Qualora invece la consegna fosse effettivamente solo quella di copiare il partial _variable nella cartella css in cui sto lavorando, senza collegamenti e modifiche, avrei usato la seconda modalità che potete testare. Nel dubbio, trovate anche il partial _variable_backup.scss, che è appunto una copia integra del file originale di bootstrap.
+
+@import "variables"; // commentare per testare l'op.2
+/* @import "pers_var"; */ // decommentare per testare l'op.2
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "_function";
+#first-cta {
+  background-image: url("../img/banner.jpg");
+  background-position: center;
+}
+#services {
+  i {
+    font-size: 2rem;
+    color: $primary;
+  }
+  h3 {
+    display: inline;
+    margin-left: 0.2em;
+  }
+  p {
+    margin: 1em 0 0 0;
+  }
+  .col-md {
+    padding: 3em 2em;
+    margin: 1em;
+    border-radius: 1em;
+    &:nth-child(odd) {
+      @include cards($light);
+    }
+    &:nth-child(even) {
+      @include cards($dark);
+    }
+  }
+}
+#partnerships {
+  .col {
+    @media screen and (max-width: 576px) {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
+}
+.reviews-card {
+  i {
+    color: $primary;
+    font-size: 1.5rem;
+  }
+}

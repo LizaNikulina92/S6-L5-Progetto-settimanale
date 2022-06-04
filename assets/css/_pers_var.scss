@@ -1,0 +1,4 @@
+$personal-1: #fa9292;
+$primary: $personal-1;
+$light: lighten($personal-1, 18%) !default;
+$dark: darken($personal-1, 65%) !default;
